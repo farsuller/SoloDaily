@@ -2,7 +2,6 @@ package com.solo.solodaily.presentation.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,12 +27,11 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(
-    paddingValues: PaddingValues,
+    event: (OnboardingEvent) -> Unit,
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues.calculateBottomPadding()),
+            .fillMaxSize(),
     ) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
@@ -88,8 +86,8 @@ fun OnboardingScreen(
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3) {
-                                // Todo
+                            if (pagerState.currentPage == 2) {
+                                event(OnboardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                             }

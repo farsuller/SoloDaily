@@ -63,6 +63,9 @@ dependencies {
     //Coil
     implementation(libs.coil.compose)
 
+    //Datastore
+    implementation (libs.androidx.datastore.preferences)
+
     //Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
