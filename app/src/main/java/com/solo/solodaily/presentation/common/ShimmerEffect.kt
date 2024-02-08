@@ -1,4 +1,4 @@
-package com.solo.solodaily.presentation.components
+package com.solo.solodaily.presentation.common
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.solo.solodaily.ui.theme.SoloDailyTheme
 
 fun Modifier.shimmerEffect() = this.then(
     composed {
@@ -52,7 +53,7 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
         )
         Column(
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier
                 .padding(start = 16.dp, top = 10.dp, end = 10.dp)
                 .height(96.dp),
@@ -69,25 +70,18 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
                     .height(15.dp)
                     .shimmerEffect(),
             )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-
-            ) {
-                Box(
-                    modifier = Modifier
-                        .width(100.dp)
-                        .height(15.dp)
-                        .shimmerEffect(),
-                )
-                Box(
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .width(100.dp)
-                        .height(15.dp)
-                        .shimmerEffect(),
-                )
-            }
+            Box(
+                modifier = Modifier
+                    .width(100.dp)
+                    .height(15.dp)
+                    .shimmerEffect(),
+            )
+            Box(
+                modifier = Modifier
+                    .width(100.dp)
+                    .height(15.dp)
+                    .shimmerEffect(),
+            )
         }
     }
 }
@@ -95,5 +89,9 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
 @SoloDailyPreviews
 @Composable
 internal fun ShimmerEffectPreview() {
-    ArticleCardShimmerEffect()
+    SoloDailyTheme {
+        Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+            ArticleCardShimmerEffect()
+        }
+    }
 }

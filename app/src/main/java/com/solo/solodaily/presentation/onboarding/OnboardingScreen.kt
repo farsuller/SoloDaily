@@ -18,10 +18,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.solo.solodaily.presentation.components.NewsButton
-import com.solo.solodaily.presentation.components.NewsTextButton
-import com.solo.solodaily.presentation.components.OnboardingPage
-import com.solo.solodaily.presentation.components.PagerIndicator
+import com.solo.solodaily.presentation.onboarding.components.NewsButton
+import com.solo.solodaily.presentation.onboarding.components.NewsTextButton
+import com.solo.solodaily.presentation.onboarding.components.OnboardingPage
+import com.solo.solodaily.presentation.onboarding.components.PagerIndicator
 import com.solo.solodaily.utils.Dimens.MediumPadding2
 import kotlinx.coroutines.launch
 

@@ -1,7 +1,10 @@
 package com.solo.solodaily.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Article(
 
     @SerializedName("author")
@@ -23,7 +26,7 @@ data class Article(
     val title: String,
 
     @SerializedName("url")
-    val url: String,
+    @PrimaryKey val url: String,
 
     @SerializedName("urlToImage")
     val urlToImage: String,

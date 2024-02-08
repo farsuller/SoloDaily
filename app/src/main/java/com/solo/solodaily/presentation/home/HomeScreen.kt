@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import com.solo.solodaily.R
 import com.solo.solodaily.domain.model.Article
-import com.solo.solodaily.presentation.components.ArticlesList
-import com.solo.solodaily.presentation.components.SearchBar
+import com.solo.solodaily.presentation.common.ArticlesList
+import com.solo.solodaily.presentation.common.SearchBar
 import com.solo.solodaily.presentation.navgraph.Route
 
 @Composable

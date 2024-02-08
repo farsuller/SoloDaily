@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.solo.solodaily.presentation.components.ArticlesList
-import com.solo.solodaily.presentation.components.SearchBar
+import com.solo.solodaily.presentation.common.ArticlesList
+import com.solo.solodaily.presentation.common.SearchBar
 import com.solo.solodaily.presentation.navgraph.Route
 
 @Composable

@@ -1,6 +1,5 @@
 package com.solo.solodaily.presentation.navgraph
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -44,8 +43,8 @@ fun NavGraph(
             ) {
                 val viewModel: HomeViewModel = hiltViewModel()
                 val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(articles = articles, navigate = { searchScreen ->
-                    navController.navigate(searchScreen)
+                HomeScreen(articles = articles, navigate = { nav ->
+                    navController.navigate(nav)
                 })
             }
 
@@ -57,8 +56,8 @@ fun NavGraph(
                 SearchScreen(
                     state = viewModel.state.value,
                     event = viewModel::onEvent,
-                    navigate = { detailScreen ->
-                        navController.navigate(detailScreen)
+                    navigate = { nav ->
+                        navController.navigate(nav)
                     },
                 )
             }
@@ -66,7 +65,7 @@ fun NavGraph(
             composable(
                 route = Route.DetailsScreen.route,
             ) {
-                Text(text = "Details Screen")
+                // DetailScreen(article = articles, event = { }, navigateUp = {})
             }
         }
     }

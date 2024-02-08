@@ -100,25 +100,29 @@ fun SoloDailyTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Color.Transparent.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
 
     SideEffect {
-        val window = (view.context as Activity).window
+        val context = view.context
+        if (context is Activity) {
+            val window = context.window
+            window.statusBarColor = Color.Transparent.toArgb()
+            window.navigationBarColor = Color.Transparent.toArgb()
 
-        window.statusBarColor = Color.Transparent.toArgb()
-        window.navigationBarColor = Color.Transparent.toArgb()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                window.isNavigationBarContrastEnforced = false
+            }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            window.isNavigationBarContrastEnforced = false
+            val windowsInsetsController = WindowCompat.getInsetsController(window, view)
+
+            windowsInsetsController.let {
+                it.isAppearanceLightStatusBars = !darkTheme
+                it.isAppearanceLightNavigationBars = !darkTheme
+            }
         }
-
-        val windowsInsetsController = WindowCompat.getInsetsController(window, view)
-
-        windowsInsetsController.isAppearanceLightStatusBars = !darkTheme
-        windowsInsetsController.isAppearanceLightNavigationBars = !darkTheme
     }
 
     MaterialTheme(

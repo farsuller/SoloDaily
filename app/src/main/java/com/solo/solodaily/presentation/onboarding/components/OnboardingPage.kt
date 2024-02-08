@@ -1,6 +1,8 @@
-package com.solo.solodaily.presentation.components
+package com.solo.solodaily.presentation.onboarding.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import com.solo.solodaily.presentation.common.SoloDailyPreviews
 import com.solo.solodaily.presentation.onboarding.Page
 import com.solo.solodaily.presentation.onboarding.pages
+import com.solo.solodaily.ui.theme.SoloDailyTheme
 import com.solo.solodaily.utils.Dimens.MediumPadding1
 import com.solo.solodaily.utils.Dimens.MediumPadding2
 
@@ -54,5 +58,9 @@ fun OnboardingPage(
 @SoloDailyPreviews
 @Composable
 fun OnboardingPagePreview() {
-    OnboardingPage(page = pages[0])
+    SoloDailyTheme {
+        Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+            OnboardingPage(page = pages[0])
+        }
+    }
 }

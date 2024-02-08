@@ -1,5 +1,6 @@
-package com.solo.solodaily.presentation.components
+package com.solo.solodaily.presentation.common
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -106,7 +107,8 @@ fun Modifier.searchBar(): Modifier = composed {
 @Composable
 fun SearchBarPreview() {
     SoloDailyTheme {
-        SearchBar(text = "", onValueChange = {}, readOnly = false) {
+        Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+            SearchBar(text = "", onValueChange = {}, readOnly = false, onSearch = {})
         }
     }
 }

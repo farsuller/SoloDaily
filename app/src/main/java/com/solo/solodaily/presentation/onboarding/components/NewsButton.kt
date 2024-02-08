@@ -1,4 +1,4 @@
-package com.solo.solodaily.presentation.components
+package com.solo.solodaily.presentation.onboarding.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
