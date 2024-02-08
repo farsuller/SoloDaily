@@ -6,18 +6,25 @@ import com.solo.solodaily.BuildConfig
 import com.solo.solodaily.data.remote.dto.NewsApi
 import com.solo.solodaily.domain.model.Article
 
-class NewsPagingSource(
+class SearchNewsPagingSource(
     private val newsApi: NewsApi,
+    private val searchQuery: String,
     private val sources: String,
-
-) : PagingSource<Int, Article>() {
+) : PagingSource<Int, Article>(){
 
     private var totalNewsCount = 0
+
+    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
         return try {
-            val newsResponse = newsApi.getNews(sources = sources, page = page, apiKey = BuildConfig.API_KEY)
+            val newsResponse = newsApi.searchNews(searchQuery = searchQuery, sources = sources, page = page, apiKey = BuildConfig.API_KEY)
             totalNewsCount += newsResponse.articles.size
             val articles = newsResponse.articles.distinctBy { it.title }
 
@@ -31,13 +38,6 @@ class NewsPagingSource(
             LoadResult.Error(
                 throwable = e,
             )
-        }
-    }
-
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
-            val anchorPage = state.closestPageToPosition(anchorPosition)
-            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 }
