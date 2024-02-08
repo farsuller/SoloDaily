@@ -2,7 +2,7 @@ package com.solo.solodaily.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.solo.solodaily.domain.usecases.AppEntryUseCases
+import com.solo.solodaily.domain.usecases.appentry.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

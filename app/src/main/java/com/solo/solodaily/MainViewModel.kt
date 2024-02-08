@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.solo.solodaily.domain.usecases.AppEntryUseCases
+import com.solo.solodaily.domain.usecases.appentry.AppEntryUseCases
 import com.solo.solodaily.presentation.navgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package com.solo.solodaily.domain.usecases
+package com.solo.solodaily.domain.usecases.appentry
 
 class AppEntryUseCases(
     val readAppEntry: ReadAppEntry,

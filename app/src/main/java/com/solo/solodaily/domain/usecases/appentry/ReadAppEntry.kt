@@ -1,4 +1,4 @@
-package com.solo.solodaily.domain.usecases
+package com.solo.solodaily.domain.usecases.appentry
 
 import com.solo.solodaily.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
