@@ -62,7 +62,7 @@ object AppModule {
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
-            searchNews = SearchNews(newsRepository)
+            searchNews = SearchNews(newsRepository),
         )
     }
 }

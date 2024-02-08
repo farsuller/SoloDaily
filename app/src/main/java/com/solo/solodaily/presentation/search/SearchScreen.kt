@@ -18,20 +18,20 @@ import com.solo.solodaily.presentation.navgraph.Route
 fun SearchScreen(
     state: SearchState,
     event: (SearchEvent) -> Unit,
-    navigate: (String) -> Unit
+    navigate: (String) -> Unit,
 ) {
-
     Column(
         modifier = Modifier
             .padding(top = 24.dp, start = 24.dp, end = 24.dp)
             .statusBarsPadding()
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
         SearchBar(
             text = state.searchQuery,
             readOnly = false,
             onValueChange = { event(SearchEvent.UpdateSearchQuery(it)) },
-            onSearch = { event(SearchEvent.SearchNews) })
+            onSearch = { event(SearchEvent.SearchNews) },
+        )
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -39,7 +39,5 @@ fun SearchScreen(
             val articles = it.collectAsLazyPagingItems()
             ArticlesList(articles = articles, onClick = { navigate(Route.DetailsScreen.route) })
         }
-
     }
-
 }

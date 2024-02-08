@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val newsUseCases: NewsUseCases
+    private val newsUseCases: NewsUseCases,
 ) : ViewModel() {
 
     private val _state = mutableStateOf(SearchState())
@@ -29,7 +29,6 @@ class SearchViewModel @Inject constructor(
             }
         }
     }
-
 
     private fun searchNews() {
         val articles = newsUseCases.searchNews(

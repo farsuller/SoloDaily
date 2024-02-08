@@ -73,7 +73,7 @@ fun ArticleCard(
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     text = article.source.name,

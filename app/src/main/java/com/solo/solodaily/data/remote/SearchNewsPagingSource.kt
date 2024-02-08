@@ -10,7 +10,7 @@ class SearchNewsPagingSource(
     private val newsApi: NewsApi,
     private val searchQuery: String,
     private val sources: String,
-) : PagingSource<Int, Article>(){
+) : PagingSource<Int, Article>() {
 
     private var totalNewsCount = 0
 

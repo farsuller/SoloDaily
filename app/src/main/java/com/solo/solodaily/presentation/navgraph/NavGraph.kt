@@ -59,7 +59,8 @@ fun NavGraph(
                     event = viewModel::onEvent,
                     navigate = { detailScreen ->
                         navController.navigate(detailScreen)
-                    })
+                    },
+                )
             }
 
             composable(
@@ -68,8 +69,5 @@ fun NavGraph(
                 Text(text = "Details Screen")
             }
         }
-
-
-
     }
 }

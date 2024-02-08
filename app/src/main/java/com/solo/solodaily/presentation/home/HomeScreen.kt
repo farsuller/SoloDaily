@@ -96,6 +96,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
             articles = articles,
             onClick = {
                 navigate(Route.DetailsScreen.route)
-            })
+            },
+        )
     }
 }
