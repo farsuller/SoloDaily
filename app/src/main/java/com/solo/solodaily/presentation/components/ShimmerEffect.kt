@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -50,28 +51,43 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
                 .shimmerEffect(),
         )
         Column(
-            verticalArrangement = Arrangement.SpaceAround,
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier
-                .padding(horizontal = 6.dp)
+                .padding(start = 16.dp, top = 10.dp, end = 10.dp)
                 .height(96.dp),
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(horizontal = 24.dp)
+                    .height(15.dp)
+                    .shimmerEffect(),
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(15.dp)
                     .shimmerEffect(),
             )
             Row(
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
+
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .padding(horizontal = 24.dp)
+                        .width(100.dp)
                         .height(15.dp)
                         .shimmerEffect(),
                 )
+                Box(
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                        .width(100.dp)
+                        .height(15.dp)
+                        .shimmerEffect(),
+                )
+
             }
         }
     }

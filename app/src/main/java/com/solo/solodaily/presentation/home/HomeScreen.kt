@@ -91,10 +91,11 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
             color = MaterialTheme.colorScheme.onSurface,
         )
 
-        Spacer(modifier = Modifier.height(14.dp))
-
-        ArticlesList(articles = articles, onClick = {
-            navigate(Route.DetailsScreen.route)
-        })
+        ArticlesList(
+            modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
+            articles = articles,
+            onClick = {
+                navigate(Route.DetailsScreen.route)
+            })
     }
 }
