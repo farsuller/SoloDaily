@@ -20,6 +20,24 @@ import com.solo.solodaily.ui.theme.SoloDailyTheme
 @Composable
 fun ArticlesList(
     modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onClick: (Article) -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        contentPadding = PaddingValues(all = 6.dp),
+    ) {
+        items(count = articles.size) { a ->
+            val article = articles[a]
+            ArticleCard(article = article, onClick = { onClick(article) })
+        }
+    }
+}
+
+@Composable
+fun ArticlesList(
+    modifier: Modifier = Modifier,
     articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit,
 ) {

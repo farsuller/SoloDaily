@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.solo.solodaily.presentation.bookmark.BookmarkScreen
+import com.solo.solodaily.presentation.bookmark.BookmarkViewModel
 import com.solo.solodaily.presentation.home.HomeScreen
 import com.solo.solodaily.presentation.home.HomeViewModel
 import com.solo.solodaily.presentation.onboarding.OnboardingScreen
@@ -65,7 +67,16 @@ fun NavGraph(
             composable(
                 route = Route.DetailsScreen.route,
             ) {
-                // DetailScreen(article = articles, event = { }, navigateUp = {})
+                //  DetailScreen(article = articles, event = { }, navigateUp = {})
+            }
+
+            composable(
+                route = Route.BookmarkScreen.route,
+            ) {
+                val viewModel: BookmarkViewModel = hiltViewModel()
+                BookmarkScreen(state = viewModel.state.value, navigate = { nav ->
+                    navController.navigate(nav)
+                })
             }
         }
     }

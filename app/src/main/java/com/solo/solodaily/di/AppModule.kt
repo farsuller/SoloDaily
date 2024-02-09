@@ -14,9 +14,12 @@ import com.solo.solodaily.domain.repository.NewsRepository
 import com.solo.solodaily.domain.usecases.appentry.AppEntryUseCases
 import com.solo.solodaily.domain.usecases.appentry.ReadAppEntry
 import com.solo.solodaily.domain.usecases.appentry.SaveAppEntry
+import com.solo.solodaily.domain.usecases.news.DeleteArticle
 import com.solo.solodaily.domain.usecases.news.GetNews
 import com.solo.solodaily.domain.usecases.news.NewsUseCases
 import com.solo.solodaily.domain.usecases.news.SearchNews
+import com.solo.solodaily.domain.usecases.news.SelectArticles
+import com.solo.solodaily.domain.usecases.news.UpsertArticle
 import com.solo.solodaily.utils.Constants.NEWS_DB_NAME
 import dagger.Module
 import dagger.Provides
@@ -64,10 +67,14 @@ object AppModule {
     @Singleton
     fun provideNewsUseCases(
         newsRepository: NewsRepository,
+        newsDao: NewsDao,
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
             searchNews = SearchNews(newsRepository),
+            upsertArticle = UpsertArticle(newsDao),
+            deleteArticle = DeleteArticle(newsDao),
+            selectArticles = SelectArticles(newsDao),
         )
     }
 
