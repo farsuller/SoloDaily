@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException
 import java.util.Properties
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
 
 plugins {
     alias(libs.plugins.android.application)
@@ -30,15 +31,18 @@ val solodailyProperties: Properties by lazy {
 }
 
 android {
-    namespace = "com.solo.solodaily"
+    namespace = ProjectConfig.namespace
 
     defaultConfig {
-        applicationId = "com.solo.solodaily"
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = ProjectConfig.applicationId
+        versionCode = ProjectConfig.versionCode
+        versionName = "${ProjectConfig.majorVersion}.${ProjectConfig.minorVersion}.${ProjectConfig.patchVersion}"
 
         buildConfigField(type = "String",name = "API_KEY", "\"${solodailyProperties.getProperty("API_KEY")}\"")
         buildConfigField(type = "String",name = "BASE_URL", "\"${solodailyProperties.getProperty("BASE_URL")}\"")
+    }
+    applicationVariants.all {
+        archivesName.set("${ProjectConfig.appFileName}-${buildType.name}-$versionCode-$versionName")
     }
 
     signingConfigs {

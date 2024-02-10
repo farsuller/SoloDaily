@@ -43,7 +43,7 @@ fun OnboardingPage(
         Text(
             modifier = Modifier.padding(horizontal = MediumPadding2),
             text = page.title,
-            style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface,
         )
         Text(
