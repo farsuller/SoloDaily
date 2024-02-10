@@ -53,7 +53,7 @@ fun EmptyScreen(error: LoadState.Error? = null) {
 
     val alphaAnimation by animateFloatAsState(
         targetValue = if (startAnimation) 0.3f else 0f,
-        animationSpec = tween(durationMillis = 1000),
+        animationSpec = tween(durationMillis = 1500),
         label = "",
     )
 
@@ -93,11 +93,11 @@ fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
 fun parseErrorMessage(error: LoadState.Error?): String {
     return when (error?.error) {
         is SocketTimeoutException -> {
-            "Server Unavailable."
+            "Network Unavailable."
         }
 
         is ConnectException -> {
-            "Internet Unavailable."
+            "Network Unavailable."
         }
 
         else -> {

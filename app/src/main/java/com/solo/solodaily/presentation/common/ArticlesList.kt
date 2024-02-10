@@ -23,6 +23,9 @@ fun ArticlesList(
     articles: List<Article>,
     onClick: (Article) -> Unit,
 ) {
+    if (articles.isEmpty()) {
+        EmptyScreen()
+    }
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(24.dp),
@@ -74,6 +77,11 @@ fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
         }
 
         error != null -> {
+            EmptyScreen(error = error)
+            false
+        }
+
+        articles.itemCount == 0 -> {
             EmptyScreen()
             false
         }
