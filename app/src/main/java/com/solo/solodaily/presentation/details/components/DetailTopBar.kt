@@ -31,8 +31,8 @@ fun DetailTopBar(
         title = {},
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = Color.Transparent,
-            actionIconContentColor = MaterialTheme.colorScheme.secondary,
-            navigationIconContentColor = MaterialTheme.colorScheme.secondary,
+            actionIconContentColor = MaterialTheme.colorScheme.onSurface,
+            navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
         ),
         navigationIcon = {
             IconButton(onClick = onBackClick) {

@@ -18,6 +18,7 @@ import com.solo.solodaily.domain.usecases.news.DeleteArticle
 import com.solo.solodaily.domain.usecases.news.GetNews
 import com.solo.solodaily.domain.usecases.news.NewsUseCases
 import com.solo.solodaily.domain.usecases.news.SearchNews
+import com.solo.solodaily.domain.usecases.news.SelectArticle
 import com.solo.solodaily.domain.usecases.news.SelectArticles
 import com.solo.solodaily.domain.usecases.news.UpsertArticle
 import com.solo.solodaily.utils.Constants.NEWS_DB_NAME
@@ -61,20 +62,21 @@ object AppModule {
     @Singleton
     fun provideNewsRepository(
         newsApi: NewsApi,
-    ): NewsRepository = NewsRepositoryImpl(newsApi = newsApi)
+        newsDao: NewsDao
+    ): NewsRepository = NewsRepositoryImpl(newsApi = newsApi, newsDao = newsDao)
 
     @Provides
     @Singleton
     fun provideNewsUseCases(
         newsRepository: NewsRepository,
-        newsDao: NewsDao,
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
             searchNews = SearchNews(newsRepository),
-            upsertArticle = UpsertArticle(newsDao),
-            deleteArticle = DeleteArticle(newsDao),
-            selectArticles = SelectArticles(newsDao),
+            upsertArticle = UpsertArticle(newsRepository),
+            deleteArticle = DeleteArticle(newsRepository),
+            selectArticles = SelectArticles(newsRepository),
+            selectArticle = SelectArticle(newsRepository)
         )
     }
 

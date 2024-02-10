@@ -10,15 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.common.SearchBar
-import com.solo.solodaily.presentation.navgraph.Route
 
 @Composable
 fun SearchScreen(
     state: SearchState,
     event: (SearchEvent) -> Unit,
-    navigate: (String) -> Unit,
+    navigateToDetails: (Article) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -35,9 +35,9 @@ fun SearchScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        state.articles?.let {
-            val articles = it.collectAsLazyPagingItems()
-            ArticlesList(articles = articles, onClick = { navigate(Route.DetailsScreen.route) })
+        state.articles?.let { a ->
+            val articles = a.collectAsLazyPagingItems()
+            ArticlesList(articles = articles, onClick = { navigateToDetails(it) })
         }
     }
 }

@@ -1,14 +1,17 @@
 package com.solo.solodaily.domain.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity
 data class Article(
 
     @SerializedName("author")
-    val author: String,
+    val author: String?,
 
     @SerializedName("content")
     val content: String,
@@ -30,4 +33,4 @@ data class Article(
 
     @SerializedName("urlToImage")
     val urlToImage: String,
-)
+): Parcelable

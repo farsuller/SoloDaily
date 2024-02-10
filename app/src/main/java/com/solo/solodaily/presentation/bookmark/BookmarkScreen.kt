@@ -12,13 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.navgraph.Route
 
 @Composable
 fun BookmarkScreen(
     state: BookmarkState,
-    navigate: (String) -> Unit,
+    navigateToDetails: (Article) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -34,6 +35,6 @@ fun BookmarkScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        ArticlesList(articles = state.articles, onClick = { navigate(Route.DetailsScreen.route) })
+        ArticlesList(articles = state.articles, onClick = { navigateToDetails(it) })
     }
 }

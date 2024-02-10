@@ -2,11 +2,12 @@ package com.solo.solodaily.domain.usecases.news
 
 import com.solo.solodaily.data.local.NewsDao
 import com.solo.solodaily.domain.model.Article
+import com.solo.solodaily.domain.repository.NewsRepository
 
 class DeleteArticle(
-    private val newsDao: NewsDao,
+    private val newsRepository: NewsRepository,
 ) {
-    suspend fun invoke(article: Article) {
-        newsDao.delete(article)
+    suspend operator fun invoke(article: Article) {
+        newsRepository.deleteArticle(article = article)
     }
 }

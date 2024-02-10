@@ -11,6 +11,7 @@ import com.solo.solodaily.presentation.bookmark.BookmarkScreen
 import com.solo.solodaily.presentation.bookmark.BookmarkViewModel
 import com.solo.solodaily.presentation.home.HomeScreen
 import com.solo.solodaily.presentation.home.HomeViewModel
+import com.solo.solodaily.presentation.newsnavigator.NewsNavigator
 import com.solo.solodaily.presentation.onboarding.OnboardingScreen
 import com.solo.solodaily.presentation.onboarding.OnboardingViewModel
 import com.solo.solodaily.presentation.search.SearchScreen
@@ -38,46 +39,14 @@ fun NavGraph(
 
         navigation(
             route = Route.NewsNavigation.route,
-            startDestination = Route.HomeScreen.route,
+            startDestination = Route.NewsScreen.route,
         ) {
             composable(
-                route = Route.HomeScreen.route,
+                route = Route.NewsScreen.route,
             ) {
-                val viewModel: HomeViewModel = hiltViewModel()
-                val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(articles = articles, navigate = { nav ->
-                    navController.navigate(nav)
-                })
+                NewsNavigator()
             }
 
-            composable(
-                route = Route.SearchScreen.route,
-            ) {
-                val viewModel: SearchViewModel = hiltViewModel()
-
-                SearchScreen(
-                    state = viewModel.state.value,
-                    event = viewModel::onEvent,
-                    navigate = { nav ->
-                        navController.navigate(nav)
-                    },
-                )
-            }
-
-            composable(
-                route = Route.DetailsScreen.route,
-            ) {
-                //  DetailScreen(article = articles, event = { }, navigateUp = {})
-            }
-
-            composable(
-                route = Route.BookmarkScreen.route,
-            ) {
-                val viewModel: BookmarkViewModel = hiltViewModel()
-                BookmarkScreen(state = viewModel.state.value, navigate = { nav ->
-                    navController.navigate(nav)
-                })
-            }
         }
     }
 }
