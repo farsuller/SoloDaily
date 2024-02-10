@@ -5,8 +5,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.solo.solodaily.domain.usecases.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel

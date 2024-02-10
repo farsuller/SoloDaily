@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException
 import java.util.Properties
 
 plugins {
@@ -7,42 +8,62 @@ plugins {
     alias(libs.plugins.protobuf)
     id("com.google.devtools.ksp")
     id("kotlin-parcelize")
+}
 
+val solodailyProperties: Properties by lazy {
+    val properties = Properties()
+    val keystorePropertiesFile = rootProject.file("keystore.properties")
+    val localPropertiesFile = rootProject.file("local.properties")
+
+    if (keystorePropertiesFile.exists()) {
+        properties.load(keystorePropertiesFile.inputStream())
+    } else {
+        throw FileNotFoundException("Keystore properties file not found.")
+    }
+    if (localPropertiesFile.exists()) {
+        properties.load(localPropertiesFile.inputStream())
+    } else {
+        throw FileNotFoundException("Local properties file not found.")
+    }
+
+    properties
 }
 
 android {
     namespace = "com.solo.solodaily"
-
 
     defaultConfig {
         applicationId = "com.solo.solodaily"
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
+        buildConfigField(type = "String",name = "API_KEY", "\"${solodailyProperties.getProperty("API_KEY")}\"")
+        buildConfigField(type = "String",name = "BASE_URL", "\"${solodailyProperties.getProperty("BASE_URL")}\"")
+    }
+
+    signingConfigs {
+        register("release") {
+            storeFile = file("keystore/solodaily.jks")
+            storePassword = solodailyProperties["releaseStorePassword"].toString()
+            keyAlias = solodailyProperties["releaseKeyAlias"].toString()
+            keyPassword = solodailyProperties["releaseKeyPassword"].toString()
         }
-
-        val properties = Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-
-        buildConfigField(type = "String",name = "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
-        buildConfigField(type = "String",name = "BASE_URL", "\"${properties.getProperty("BASE_URL")}\"")
     }
 
     buildTypes {
-        release {
+        debug {
+            applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
-    }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+        release {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isDebuggable = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
     buildFeatures {
         compose = true

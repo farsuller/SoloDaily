@@ -35,7 +35,6 @@ import com.solo.solodaily.R
 import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.common.SearchBar
-import com.solo.solodaily.presentation.navgraph.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -68,7 +67,8 @@ fun HomeScreen(
                 articles.refresh()
                 isRefreshing = false
             }
-        })
+        },
+    )
 
     Column(
         modifier = Modifier
@@ -117,7 +117,7 @@ fun HomeScreen(
             color = MaterialTheme.colorScheme.onSurface,
         )
 
-        Box(modifier = Modifier.pullRefresh(pullRefreshState)){
+        Box(modifier = Modifier.pullRefresh(pullRefreshState)) {
             ArticlesList(
                 modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
                 articles = articles,
@@ -129,7 +129,7 @@ fun HomeScreen(
             PullRefreshIndicator(
                 refreshing = isRefreshing,
                 state = pullRefreshState,
-                modifier = Modifier.align(Alignment.TopCenter)
+                modifier = Modifier.align(Alignment.TopCenter),
             )
         }
     }

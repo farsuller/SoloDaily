@@ -33,4 +33,4 @@ data class Article(
 
     @SerializedName("urlToImage")
     val urlToImage: String,
-): Parcelable
+) : Parcelable

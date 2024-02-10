@@ -13,27 +13,26 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val newsUseCases: NewsUseCases
-): ViewModel() {
+    private val newsUseCases: NewsUseCases,
+) : ViewModel() {
 
     var sideEffect by mutableStateOf<String?>(null)
         private set
 
-    fun onEvent(event: DetailsEvent){
-        when(event){
+    fun onEvent(event: DetailsEvent) {
+        when (event) {
             is DetailsEvent.UpsertDeleteArticle -> {
                 viewModelScope.launch {
                     val article = newsUseCases.selectArticle(event.article.url)
-                    if (article == null){
+                    if (article == null) {
                         upsertArticle(event.article)
-                    }
-                    else{
+                    } else {
                         deleteArticle(event.article)
                     }
                 }
-
             }
-            is DetailsEvent.RemoveSideEffect ->{
+
+            is DetailsEvent.RemoveSideEffect -> {
                 sideEffect = null
             }
         }

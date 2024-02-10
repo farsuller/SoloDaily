@@ -29,14 +29,13 @@ import com.solo.solodaily.ui.theme.SoloDailyTheme
 fun NewsBottomNavigation(
     items: List<BottomNavigationItem>,
     selected: Int,
-    onItemClick: (Int) -> Unit
+    onItemClick: (Int) -> Unit,
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background,
-        tonalElevation = 10.dp
+        tonalElevation = 10.dp,
     ) {
-
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = index == selected,
@@ -46,7 +45,7 @@ fun NewsBottomNavigation(
                         Icon(
                             modifier = Modifier.size(20.dp),
                             imageVector = item.icon,
-                            contentDescription = null
+                            contentDescription = null,
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(text = item.text, style = MaterialTheme.typography.labelSmall)
@@ -56,31 +55,32 @@ fun NewsBottomNavigation(
                     selectedIconColor = MaterialTheme.colorScheme.secondary,
                     selectedTextColor = MaterialTheme.colorScheme.secondary,
                     unselectedIconColor = MaterialTheme.colorScheme.primary,
-                    unselectedTextColor = MaterialTheme.colorScheme.primary
-                )
+                    unselectedTextColor = MaterialTheme.colorScheme.primary,
+                ),
             )
         }
-
     }
-
 }
 
 data class BottomNavigationItem(
     val icon: ImageVector,
-    val text: String
+    val text: String,
 )
-
 
 @SoloDailyPreviews
 @Composable
 internal fun NewsBottomNavigationPreview() {
     SoloDailyTheme {
         Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-            NewsBottomNavigation(items = listOf(
-                BottomNavigationItem(icon = Icons.Filled.Home, text = "Home"),
-                BottomNavigationItem(icon = Icons.Filled.Search, text = "Search"),
-                BottomNavigationItem(icon = Icons.Filled.Bookmark, text = "Bookmark")
-            ), selected = 0, onItemClick = {})
+            NewsBottomNavigation(
+                items = listOf(
+                    BottomNavigationItem(icon = Icons.Filled.Home, text = "Home"),
+                    BottomNavigationItem(icon = Icons.Filled.Search, text = "Search"),
+                    BottomNavigationItem(icon = Icons.Filled.Bookmark, text = "Bookmark"),
+                ),
+                selected = 0,
+                onItemClick = {},
+            )
         }
     }
 }

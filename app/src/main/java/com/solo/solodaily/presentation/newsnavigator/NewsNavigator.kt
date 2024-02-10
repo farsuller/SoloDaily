@@ -37,15 +37,13 @@ import com.solo.solodaily.presentation.newsnavigator.component.NewsBottomNavigat
 import com.solo.solodaily.presentation.search.SearchScreen
 import com.solo.solodaily.presentation.search.SearchViewModel
 
-
 @Composable
 fun NewsNavigator() {
-
     val bottomNavigationItems = remember {
         listOf(
             BottomNavigationItem(icon = Icons.Filled.Home, text = "Home"),
             BottomNavigationItem(icon = Icons.Filled.Search, text = "Search"),
-            BottomNavigationItem(icon = Icons.Filled.Bookmark, text = "Bookmark")
+            BottomNavigationItem(icon = Icons.Filled.Bookmark, text = "Bookmark"),
         )
     }
 
@@ -64,11 +62,10 @@ fun NewsNavigator() {
         }
     }
 
-
     val isBottomNavBarVisible = remember(key1 = backStackState) {
         backStackState?.destination?.route == Route.HomeScreen.route ||
-                backStackState?.destination?.route == Route.SearchScreen.route ||
-                backStackState?.destination?.route == Route.BookmarkScreen.route
+            backStackState?.destination?.route == Route.SearchScreen.route ||
+            backStackState?.destination?.route == Route.BookmarkScreen.route
     }
 
     Scaffold(
@@ -82,29 +79,30 @@ fun NewsNavigator() {
                         when (index) {
                             0 -> navigateToTap(
                                 navController = navController,
-                                route = Route.HomeScreen.route
+                                route = Route.HomeScreen.route,
                             )
 
                             1 -> navigateToTap(
                                 navController = navController,
-                                route = Route.SearchScreen.route
+                                route = Route.SearchScreen.route,
                             )
 
                             2 -> navigateToTap(
                                 navController = navController,
-                                route = Route.BookmarkScreen.route
+                                route = Route.BookmarkScreen.route,
                             )
                         }
-                    }
+                    },
                 )
             }
-        }
+        },
     ) {
         val bottomPadding = it.calculateBottomPadding()
 
         NavHost(
             modifier = Modifier.padding(bottom = bottomPadding),
-            navController = navController, startDestination = Route.HomeScreen.route
+            navController = navController,
+            startDestination = Route.HomeScreen.route,
         ) {
             composable(route = Route.HomeScreen.route) {
                 val viewModel: HomeViewModel = hiltViewModel()
@@ -117,7 +115,8 @@ fun NewsNavigator() {
                     },
                     navigateToDetails = { article ->
                         navigateToDetails(navController = navController, article = article)
-                    })
+                    },
+                )
             }
 
             composable(route = Route.SearchScreen.route) {
@@ -130,14 +129,15 @@ fun NewsNavigator() {
                     navigateToDetails = { article ->
                         navigateToDetails(
                             navController = navController,
-                            article = article
+                            article = article,
                         )
-                    })
+                    },
+                )
             }
 
             composable(route = Route.DetailsScreen.route) {
                 val viewModel: DetailsViewModel = hiltViewModel()
-                if(viewModel.sideEffect != null){
+                if (viewModel.sideEffect != null) {
                     Toast.makeText(LocalContext.current, viewModel.sideEffect, Toast.LENGTH_SHORT).show()
                     viewModel.onEvent(DetailsEvent.RemoveSideEffect)
                 }
@@ -148,7 +148,7 @@ fun NewsNavigator() {
                             event = viewModel::onEvent,
                             navigateUp = {
                                 navController.navigateUp()
-                            }
+                            },
                         )
                     }
             }
@@ -160,12 +160,11 @@ fun NewsNavigator() {
                 BookmarkScreen(state = state, navigateToDetails = { article ->
                     navigateToDetails(
                         navController = navController,
-                        article = article
+                        article = article,
                     )
                 })
             }
         }
-
     }
 }
 

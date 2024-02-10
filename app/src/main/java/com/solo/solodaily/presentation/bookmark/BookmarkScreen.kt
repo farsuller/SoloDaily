@@ -14,7 +14,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
-import com.solo.solodaily.presentation.navgraph.Route
 
 @Composable
 fun BookmarkScreen(

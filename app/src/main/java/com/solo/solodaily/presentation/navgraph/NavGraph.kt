@@ -6,16 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.solo.solodaily.presentation.bookmark.BookmarkScreen
-import com.solo.solodaily.presentation.bookmark.BookmarkViewModel
-import com.solo.solodaily.presentation.home.HomeScreen
-import com.solo.solodaily.presentation.home.HomeViewModel
 import com.solo.solodaily.presentation.newsnavigator.NewsNavigator
 import com.solo.solodaily.presentation.onboarding.OnboardingScreen
 import com.solo.solodaily.presentation.onboarding.OnboardingViewModel
-import com.solo.solodaily.presentation.search.SearchScreen
-import com.solo.solodaily.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph(
@@ -46,7 +39,6 @@ fun NavGraph(
             ) {
                 NewsNavigator()
             }
-
         }
     }
 }

@@ -29,7 +29,6 @@ fun SearchScreen(
             .statusBarsPadding()
             .fillMaxSize(),
     ) {
-
         Text(
             text = "Search",
             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),

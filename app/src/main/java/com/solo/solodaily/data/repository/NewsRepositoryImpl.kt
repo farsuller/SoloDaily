@@ -10,12 +10,11 @@ import com.solo.solodaily.data.remote.dto.NewsApi
 import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApi,
-    val newsDao: NewsDao
+    val newsDao: NewsDao,
 ) : NewsRepository {
     override fun getNews(sources: List<String>): Flow<PagingData<Article>> {
         return Pager(
@@ -55,6 +54,6 @@ class NewsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun selectArticle(url: String): Article? {
-       return newsDao.getArticle(url = url)
+        return newsDao.getArticle(url = url)
     }
 }
