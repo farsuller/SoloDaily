@@ -27,11 +27,11 @@ buildscript {
 }
 
 fun BaseExtension.defaultConfig() {
-    compileSdkVersion(34)
+    compileSdkVersion(ProjectConfig.compileSdk)
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 34
+        minSdk = ProjectConfig.minSdk
+        targetSdk = ProjectConfig.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

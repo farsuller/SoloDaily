@@ -99,7 +99,7 @@ fun DetailScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = article.content,
+                    text = article.description,
                     style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp),
                     color = MaterialTheme.colorScheme.onSurface,
                     lineHeight = 25.sp,
