@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -29,6 +30,9 @@ import com.solo.solodaily.domain.model.Source
 import com.solo.solodaily.presentation.common.SoloDailyPreviews
 import com.solo.solodaily.presentation.details.components.DetailTopBar
 import com.solo.solodaily.ui.theme.SoloDailyTheme
+import com.solo.solodaily.utils.TestTags.DETAIL_DESCRIPTION
+import com.solo.solodaily.utils.TestTags.DETAIL_IMAGE
+import com.solo.solodaily.utils.TestTags.DETAIL_TITLE
 
 @Composable
 fun DetailScreen(
@@ -78,7 +82,8 @@ fun DetailScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(248.dp)
-                        .clip(MaterialTheme.shapes.medium),
+                        .clip(MaterialTheme.shapes.medium)
+                        .testTag(DETAIL_IMAGE),
                     model = ImageRequest
                         .Builder(context)
                         .placeholder(R.drawable.solodaily_logo)
@@ -91,6 +96,7 @@ fun DetailScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
+                    modifier = Modifier.testTag(DETAIL_TITLE),
                     text = article.title,
                     style = MaterialTheme.typography.displaySmall.copy(fontSize = 30.sp),
                     color = MaterialTheme.colorScheme.onSurface,
@@ -99,6 +105,7 @@ fun DetailScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
+                    modifier = Modifier.testTag(DETAIL_DESCRIPTION),
                     text = article.description,
                     style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp),
                     color = MaterialTheme.colorScheme.onSurface,

@@ -2,13 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="SearchBarPreview">
+      <entry key="DetailScreenTest">
         <State />
       </entry>
-      <entry key="ShimmerEffectPreview">
+      <entry key="NewsScreenTest">
         <State />
       </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="detailScreen_Assert_DetailScreenDisplayed()">
+        <State />
+      </entry>
+      <entry key="detailTopBar_Assert_DetailTopBarDisplayed()">
+        <State />
+      </entry>
+      <entry key="titles_Assert_TitlesMarqueeDisplayed()">
         <State />
       </entry>
     </value>

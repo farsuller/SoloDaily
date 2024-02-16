@@ -16,8 +16,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import com.solo.solodaily.presentation.common.SoloDailyPreviews
 import com.solo.solodaily.ui.theme.SoloDailyTheme
+import com.solo.solodaily.utils.TestTags.DETAIL_TOP_BAR
 
 @Composable
 fun DetailTopBar(
@@ -27,7 +29,7 @@ fun DetailTopBar(
     onBackClick: () -> Unit,
 ) {
     TopAppBar(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().testTag(DETAIL_TOP_BAR),
         title = {},
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = Color.Transparent,
@@ -38,19 +40,22 @@ fun DetailTopBar(
             IconButton(onClick = onBackClick) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBackIos,
-                    contentDescription = "back",
+                    contentDescription = "BackButton",
                 )
             }
         },
         actions = {
             IconButton(onClick = onBookmarkClick) {
-                Icon(imageVector = Icons.Filled.Bookmark, contentDescription = "bookmark")
+                Icon(imageVector = Icons.Filled.Bookmark,
+                    contentDescription = "BookmarkButton")
             }
             IconButton(onClick = onShareClick) {
-                Icon(imageVector = Icons.Filled.Share, contentDescription = "share")
+                Icon(imageVector = Icons.Filled.Share,
+                    contentDescription = "ShareButton")
             }
             IconButton(onClick = onBrowsingClick) {
-                Icon(imageVector = Icons.Filled.OpenInBrowser, contentDescription = "browse")
+                Icon(imageVector = Icons.Filled.OpenInBrowser,
+                    contentDescription = "BrowseButton")
             }
         },
     )

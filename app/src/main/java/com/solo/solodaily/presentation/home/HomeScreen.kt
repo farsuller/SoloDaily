@@ -27,6 +27,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -35,6 +36,9 @@ import com.solo.solodaily.R
 import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.common.SearchBar
+import com.solo.solodaily.utils.TestTags.HEADER_SOLODAILY
+import com.solo.solodaily.utils.TestTags.SEARCH_BAR
+import com.solo.solodaily.utils.TestTags.TITLE_MARQUEES
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -75,25 +79,7 @@ fun HomeScreen(
             .fillMaxSize()
             .statusBarsPadding(),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.solodaily_logo),
-                contentDescription = null,
-                modifier = Modifier.size(80.dp),
-            )
-
-            Text(
-                text = "SoloDaily",
-                modifier = Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
-        }
+        HeaderSoloDaily()
 
         SearchBar(
             modifier = Modifier.padding(start = 24.dp, end = 24.dp),
@@ -108,14 +94,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = titles,
-            modifier = Modifier
-                .fillMaxWidth()
-                .basicMarquee(),
-            fontSize = MaterialTheme.typography.bodySmall.fontSize,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
+        TitleMarquees(titles)
 
         Box(modifier = Modifier.pullRefresh(pullRefreshState)) {
             ArticlesList(
@@ -132,5 +111,43 @@ fun HomeScreen(
                 modifier = Modifier.align(Alignment.TopCenter),
             )
         }
+    }
+}
+
+@Composable
+fun TitleMarquees(titles: String) {
+    Text(
+        text = titles,
+        modifier = Modifier
+            .fillMaxWidth()
+            .basicMarquee()
+            .testTag(TITLE_MARQUEES),
+        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+        color = MaterialTheme.colorScheme.onSurface,
+    )
+}
+
+@Composable
+fun HeaderSoloDaily() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(HEADER_SOLODAILY),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.solodaily_logo),
+            contentDescription = null,
+            modifier = Modifier.size(80.dp),
+        )
+
+        Text(
+            text = "SoloDaily",
+            modifier = Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            fontSize = MaterialTheme.typography.titleLarge.fontSize,
+            color = MaterialTheme.colorScheme.onSurface,
+        )
     }
 }

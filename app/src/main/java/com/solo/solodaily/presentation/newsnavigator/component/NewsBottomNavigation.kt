@@ -21,9 +21,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.solo.solodaily.presentation.common.SoloDailyPreviews
 import com.solo.solodaily.ui.theme.SoloDailyTheme
+import com.solo.solodaily.utils.TestTags.BOTTOM_NAVIGATION
+import com.solo.solodaily.utils.TestTags.BOTTOM_NAVIGATION_ITEM_TEXT
 
 @Composable
 fun NewsBottomNavigation(
@@ -32,7 +35,9 @@ fun NewsBottomNavigation(
     onItemClick: (Int) -> Unit,
 ) {
     NavigationBar(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(BOTTOM_NAVIGATION),
         containerColor = MaterialTheme.colorScheme.background,
         tonalElevation = 10.dp,
     ) {
@@ -48,7 +53,11 @@ fun NewsBottomNavigation(
                             contentDescription = null,
                         )
                         Spacer(modifier = Modifier.height(6.dp))
-                        Text(text = item.text, style = MaterialTheme.typography.labelSmall)
+                        Text(
+                            modifier = Modifier.testTag(BOTTOM_NAVIGATION_ITEM_TEXT),
+                            text = item.text,
+                            style = MaterialTheme.typography.labelSmall
+                        )
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(

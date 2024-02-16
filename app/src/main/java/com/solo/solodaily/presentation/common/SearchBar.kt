@@ -21,11 +21,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.solo.solodaily.R
 import com.solo.solodaily.ui.theme.SoloDailyTheme
+import com.solo.solodaily.utils.TestTags
 
 @Composable
 fun SearchBar(
@@ -46,7 +48,7 @@ fun SearchBar(
         }
     }
 
-    Box(modifier = modifier) {
+    Box(modifier = modifier.testTag(TestTags.SEARCH_BAR)) {
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
