@@ -56,7 +56,7 @@ fun NewsBottomNavigation(
                         Text(
                             modifier = Modifier.testTag(BOTTOM_NAVIGATION_ITEM_TEXT),
                             text = item.text,
-                            style = MaterialTheme.typography.labelSmall
+                            style = MaterialTheme.typography.labelSmall,
                         )
                     }
                 },

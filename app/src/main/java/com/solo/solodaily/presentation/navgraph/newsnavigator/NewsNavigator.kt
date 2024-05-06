@@ -24,6 +24,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.solo.solodaily.domain.model.Article
+import com.solo.solodaily.presentation.navgraph.Route
+import com.solo.solodaily.presentation.navgraph.newsnavigator.component.BottomNavigationItem
+import com.solo.solodaily.presentation.navgraph.newsnavigator.component.NewsBottomNavigation
 import com.solo.solodaily.presentation.screens.bookmark.BookmarkScreen
 import com.solo.solodaily.presentation.screens.bookmark.BookmarkViewModel
 import com.solo.solodaily.presentation.screens.details.DetailScreen
@@ -31,9 +34,6 @@ import com.solo.solodaily.presentation.screens.details.DetailsEvent
 import com.solo.solodaily.presentation.screens.details.DetailsViewModel
 import com.solo.solodaily.presentation.screens.home.HomeScreen
 import com.solo.solodaily.presentation.screens.home.HomeViewModel
-import com.solo.solodaily.presentation.navgraph.Route
-import com.solo.solodaily.presentation.navgraph.newsnavigator.component.BottomNavigationItem
-import com.solo.solodaily.presentation.navgraph.newsnavigator.component.NewsBottomNavigation
 import com.solo.solodaily.presentation.screens.search.SearchScreen
 import com.solo.solodaily.presentation.screens.search.SearchViewModel
 

@@ -46,16 +46,22 @@ fun DetailTopBar(
         },
         actions = {
             IconButton(onClick = onBookmarkClick) {
-                Icon(imageVector = Icons.Filled.Bookmark,
-                    contentDescription = "BookmarkButton")
+                Icon(
+                    imageVector = Icons.Filled.Bookmark,
+                    contentDescription = "BookmarkButton",
+                )
             }
             IconButton(onClick = onShareClick) {
-                Icon(imageVector = Icons.Filled.Share,
-                    contentDescription = "ShareButton")
+                Icon(
+                    imageVector = Icons.Filled.Share,
+                    contentDescription = "ShareButton",
+                )
             }
             IconButton(onClick = onBrowsingClick) {
-                Icon(imageVector = Icons.Filled.OpenInBrowser,
-                    contentDescription = "BrowseButton")
+                Icon(
+                    imageVector = Icons.Filled.OpenInBrowser,
+                    contentDescription = "BrowseButton",
+                )
             }
         },
     )

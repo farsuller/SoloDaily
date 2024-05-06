@@ -23,7 +23,6 @@ class DetailScreenTest {
     @get: Rule
     val composeTestRule = createComposeRule()
 
-
     @Test
     fun detailTopBar_Assert_DetailTopBarDisplayed() {
         composeTestRule.setContent {
@@ -31,7 +30,8 @@ class DetailScreenTest {
                 onBrowsingClick = {},
                 onShareClick = {},
                 onBookmarkClick = {},
-                onBackClick = {})
+                onBackClick = {},
+            )
         }
 
         composeTestRule.onNodeWithTag(DETAIL_TOP_BAR).assertExists()
@@ -42,15 +42,12 @@ class DetailScreenTest {
         composeTestRule.onNodeWithContentDescription("BookmarkButton").assertExists()
         composeTestRule.onNodeWithContentDescription("BookmarkButton").performClick()
 
-
         composeTestRule.onNodeWithContentDescription("ShareButton").assertExists()
         composeTestRule.onNodeWithContentDescription("ShareButton").performClick()
 
         composeTestRule.onNodeWithContentDescription("BrowseButton").assertExists()
         composeTestRule.onNodeWithContentDescription("BrowseButton").performClick()
-
     }
-
 
     @Test
     fun detailScreen_Assert_DetailScreenDisplayed() {
@@ -76,7 +73,5 @@ class DetailScreenTest {
         composeTestRule.onNodeWithTag(DETAIL_TITLE).assertExists()
 
         composeTestRule.onNodeWithTag(DETAIL_DESCRIPTION).assertExists()
-
     }
-
 }

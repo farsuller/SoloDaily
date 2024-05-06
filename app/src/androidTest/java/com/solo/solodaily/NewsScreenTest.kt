@@ -9,10 +9,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.solo.solodaily.presentation.common.SearchBar
-import com.solo.solodaily.presentation.screens.home.HeaderSoloDaily
-import com.solo.solodaily.presentation.screens.home.TitleMarquees
 import com.solo.solodaily.presentation.navgraph.newsnavigator.component.BottomNavigationItem
 import com.solo.solodaily.presentation.navgraph.newsnavigator.component.NewsBottomNavigation
+import com.solo.solodaily.presentation.screens.home.HeaderSoloDaily
+import com.solo.solodaily.presentation.screens.home.TitleMarquees
 import com.solo.solodaily.utils.TestTags.HEADER_SOLODAILY
 import com.solo.solodaily.utils.TestTags.SEARCH_BAR
 import com.solo.solodaily.utils.TestTags.TITLE_MARQUEES
@@ -52,7 +52,6 @@ class NewsScreenTest {
         composeTestRule.onNodeWithText("Bookmark").assertExists()
     }
 
-
     @Test
     fun searchBar_Assert_SearchBarDisplayed() {
         composeTestRule.setContent {
@@ -63,7 +62,7 @@ class NewsScreenTest {
     }
 
     @Test
-    fun header_Assert_HeaderDisplayed(){
+    fun header_Assert_HeaderDisplayed() {
         composeTestRule.setContent {
             HeaderSoloDaily()
         }
@@ -72,7 +71,7 @@ class NewsScreenTest {
     }
 
     @Test
-    fun titles_Assert_TitlesMarqueeDisplayed(){
+    fun titles_Assert_TitlesMarqueeDisplayed() {
         composeTestRule.setContent {
             TitleMarquees("Titles, Short Titles, Very Short Titles, Long Titles, Very Long Titles,Very Long Long Titles, ")
         }

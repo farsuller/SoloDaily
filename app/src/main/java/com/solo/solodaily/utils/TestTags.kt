@@ -1,6 +1,5 @@
 package com.solo.solodaily.utils
 
-
 object TestTags {
 
     const val HEADER_SOLODAILY = "SoloDaily"

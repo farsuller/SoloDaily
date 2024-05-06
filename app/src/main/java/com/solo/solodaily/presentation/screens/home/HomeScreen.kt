@@ -37,7 +37,6 @@ import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.common.SearchBar
 import com.solo.solodaily.utils.TestTags.HEADER_SOLODAILY
-import com.solo.solodaily.utils.TestTags.SEARCH_BAR
 import com.solo.solodaily.utils.TestTags.TITLE_MARQUEES
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
