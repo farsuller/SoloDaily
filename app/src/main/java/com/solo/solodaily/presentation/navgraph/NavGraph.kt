@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.solo.solodaily.presentation.newsnavigator.NewsNavigator
-import com.solo.solodaily.presentation.onboarding.OnboardingScreen
-import com.solo.solodaily.presentation.onboarding.OnboardingViewModel
+import com.solo.solodaily.presentation.navgraph.newsnavigator.NewsNavigator
+import com.solo.solodaily.presentation.screens.onboarding.OnboardingScreen
+import com.solo.solodaily.presentation.screens.onboarding.OnboardingViewModel
 
 @Composable
 fun NavGraph(

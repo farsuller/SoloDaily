@@ -9,10 +9,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.solo.solodaily.presentation.common.SearchBar
-import com.solo.solodaily.presentation.home.HeaderSoloDaily
-import com.solo.solodaily.presentation.home.TitleMarquees
-import com.solo.solodaily.presentation.newsnavigator.component.BottomNavigationItem
-import com.solo.solodaily.presentation.newsnavigator.component.NewsBottomNavigation
+import com.solo.solodaily.presentation.screens.home.HeaderSoloDaily
+import com.solo.solodaily.presentation.screens.home.TitleMarquees
+import com.solo.solodaily.presentation.navgraph.newsnavigator.component.BottomNavigationItem
+import com.solo.solodaily.presentation.navgraph.newsnavigator.component.NewsBottomNavigation
 import com.solo.solodaily.utils.TestTags.HEADER_SOLODAILY
 import com.solo.solodaily.utils.TestTags.SEARCH_BAR
 import com.solo.solodaily.utils.TestTags.TITLE_MARQUEES

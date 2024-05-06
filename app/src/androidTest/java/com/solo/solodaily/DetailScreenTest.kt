@@ -3,11 +3,12 @@ package com.solo.solodaily
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.solo.solodaily.domain.model.Article
 import com.solo.solodaily.domain.model.Source
-import com.solo.solodaily.presentation.details.DetailScreen
-import com.solo.solodaily.presentation.details.components.DetailTopBar
+import com.solo.solodaily.presentation.screens.details.DetailScreen
+import com.solo.solodaily.presentation.screens.details.components.DetailTopBar
 import com.solo.solodaily.utils.TestTags.DETAIL_DESCRIPTION
 import com.solo.solodaily.utils.TestTags.DETAIL_IMAGE
 import com.solo.solodaily.utils.TestTags.DETAIL_TITLE
@@ -36,12 +37,18 @@ class DetailScreenTest {
         composeTestRule.onNodeWithTag(DETAIL_TOP_BAR).assertExists()
 
         composeTestRule.onNodeWithContentDescription("BackButton").assertExists()
+        composeTestRule.onNodeWithContentDescription("BackButton").performClick()
 
         composeTestRule.onNodeWithContentDescription("BookmarkButton").assertExists()
+        composeTestRule.onNodeWithContentDescription("BookmarkButton").performClick()
+
 
         composeTestRule.onNodeWithContentDescription("ShareButton").assertExists()
+        composeTestRule.onNodeWithContentDescription("ShareButton").performClick()
 
         composeTestRule.onNodeWithContentDescription("BrowseButton").assertExists()
+        composeTestRule.onNodeWithContentDescription("BrowseButton").performClick()
+
     }
 
 

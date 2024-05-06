@@ -4,11 +4,14 @@ androidApplication = "8.2.2"
 converterGson = "2.9.0"
 datastorePreferences = "1.0.0"
 kotlinAndroid = "1.9.22"
+kotlinxCoroutinesTest = "1.5.2"
 ktlint = "11.6.0"
 kotlinJvm = "1.9.22"
 androidLibrary = "8.2.2"
 kotlinSerialization = "1.9.0"
 hilt = "2.50"
+mockitoCore = "3.12.4"
+mockitoKotlin = "3.2.0"
 pagingCompose = "3.2.1"
 pagingRuntime = "3.2.1"
 devtoolKsp = "1.9.22-1.0.17"
@@ -41,15 +44,16 @@ googleTruth = "1.1.5"
 
 #others
 appcompat = "1.6.1"
-material = "1.6.1"
+material = "1.6.2"
 material3 = "1.2.0"
 
 coil = "2.5.0"
 
 junit4 = "4.13.2"
 junitVersion = "1.1.5"
-ui-tooling = "1.6.1"
-material-icons-extended = "1.6.1"
+turbine = "0.5.2"
+ui-tooling = "1.6.2"
+material-icons-extended = "1.6.2"
 splash = "1.0.1"
 
 kotlinCompilerExtensionVersion = "1.5.8"
@@ -92,6 +96,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 
 spotless = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -101,6 +106,7 @@ kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutine
 
 google-truth = { group = "com.google.truth", name = "truth", version.ref = "googleTruth" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version = "1" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidApplication" }
