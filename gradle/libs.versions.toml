@@ -1,32 +1,33 @@
 [versions]
 #plugins
-androidApplication = "8.2.2"
+agp = "8.4.1"
+kotlin = "2.0.0"
 converterGson = "2.9.0"
-datastorePreferences = "1.0.0"
-kotlinAndroid = "1.9.22"
+datastorePreferences = "1.1.1"
+
 kotlinxCoroutinesTest = "1.5.2"
 ktlint = "11.6.0"
 kotlinJvm = "1.9.22"
 androidLibrary = "8.2.2"
-kotlinSerialization = "1.9.0"
+kotlinSerialization = "2.0.0"
 hilt = "2.50"
 mockitoCore = "3.12.4"
 mockitoKotlin = "3.2.0"
-pagingCompose = "3.2.1"
-pagingRuntime = "3.2.1"
-devtoolKsp = "1.9.22-1.0.17"
+pagingCompose = "3.3.0"
+pagingRuntime = "3.3.0"
+devtoolKsp = "2.0.0-1.0.22"
 protobuf = "0.9.4"
 
 #libraries
-core = "1.12.0"
+core = "1.13.1"
 
-lifecycleRuntime = "2.7.0"
-activityCompose = "1.8.2"
-composeBom = "2024.02.00"
+lifecycleRuntime = "2.8.1"
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
 composeConstraintLayout = "1.0.1"
-dataStore = "1.0.0"
+dataStore = "1.1.1"
 composeNavigation = "2.7.7"
-hiltComposeNavigation = "1.1.0"
+hiltComposeNavigation = "1.2.0"
 protobufJavaLite = "3.25.0"
 kotlinCoroutines = "1.7.3"
 
@@ -43,17 +44,17 @@ spotless = "6.19.0"
 googleTruth = "1.1.5"
 
 #others
-appcompat = "1.6.1"
-material = "1.6.2"
-material3 = "1.2.0"
+appcompat = "1.7.0"
+material = "1.6.7"
+material3 = "1.2.1"
 
 coil = "2.5.0"
 
 junit4 = "4.13.2"
 junitVersion = "1.1.5"
 turbine = "0.5.2"
-ui-tooling = "1.6.2"
-material-icons-extended = "1.6.2"
+ui-tooling = "1.6.7"
+material-icons-extended = "1.6.7"
 splash = "1.0.1"
 
 kotlinCompilerExtensionVersion = "1.5.8"
@@ -109,8 +110,8 @@ javax-inject = { group = "javax.inject", name = "javax.inject", version = "1" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "androidApplication" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinAndroid" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinJvm" }
@@ -121,3 +122,4 @@ protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 parcelize = { id = "kotlin-parcelize" }
 ksp = { id = "com.google.devtools.ksp" }
 devtool-ksp = { id = "com.google.devtools.ksp", version.ref = "devtoolKsp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

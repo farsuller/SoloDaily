@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException
 import java.util.Properties
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
+
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.hilt)
     alias(libs.plugins.protobuf)
     id("com.google.devtools.ksp")
@@ -42,7 +43,7 @@ android {
         buildConfigField(type = "String",name = "BASE_URL", "\"${solodailyProperties.getProperty("BASE_URL")}\"")
     }
     applicationVariants.all {
-        archivesName.set("${ProjectConfig.appFileName}-${buildType.name}-$versionCode-$versionName")
+        base.archivesName.set("${ProjectConfig.appFileName}-${buildType.name}-$versionCode-$versionName")
     }
 
     signingConfigs {
