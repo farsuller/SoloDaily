@@ -1,5 +1,7 @@
 package com.solo.solodaily.utils
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
@@ -7,6 +9,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
+
+fun Context.sharedPreferences(name: String) = SharedPreferenceDelegate(this, name)
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun formatDateTimeVersionCodeO(inputDateTime: String): String {

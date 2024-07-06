@@ -105,6 +105,7 @@ dependencies {
     //Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
 
     //Hilt
     implementation(libs.androidx.hilt.compose.navigation)

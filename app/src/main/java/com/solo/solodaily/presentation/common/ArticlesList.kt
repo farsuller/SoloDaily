@@ -56,6 +56,11 @@ fun ArticlesList(
                     ArticleCard(article = a, onClick = { onClick(a) })
                 }
             }
+            item {
+                if (articles.loadState.append is LoadState.Loading) {
+                    ShimmerEffect()
+                }
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.solo.solodaily.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.solo.solodaily.BuildConfig
 import com.solo.solodaily.data.local.NewsDao
@@ -22,12 +23,18 @@ import com.solo.solodaily.domain.usecases.news.SelectArticle
 import com.solo.solodaily.domain.usecases.news.SelectArticles
 import com.solo.solodaily.domain.usecases.news.UpsertArticle
 import com.solo.solodaily.utils.Constants.NEWS_DB_NAME
+import com.solo.solodaily.utils.sharedPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -50,9 +57,38 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsApi(): NewsApi {
+    fun provideNewsApi(@ApplicationContext context: Context): NewsApi {
+
+        val token by context.sharedPreferences(name = "token")
+
+        val clientBuilder = OkHttpClient.Builder()
+
+        clientBuilder
+            .connectTimeout(30, TimeUnit.SECONDS)  // Maximum time to establish a connection
+            .readTimeout(30, TimeUnit.SECONDS)     // Maximum time to wait for a server response
+            .writeTimeout(30, TimeUnit.SECONDS)    // Maximum time to send data to the server
+
+        if (BuildConfig.DEBUG) {
+            val logging = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+            clientBuilder.addInterceptor(logging)
+        }
+
+        val tokenInterceptor = Interceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            chain.proceed(request)
+        }
+
+        clientBuilder.addInterceptor(tokenInterceptor)
+
+        val client = clientBuilder.build()
+
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsApi::class.java)

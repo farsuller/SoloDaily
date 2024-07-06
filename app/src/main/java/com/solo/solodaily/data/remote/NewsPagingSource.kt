@@ -5,6 +5,8 @@ import androidx.paging.PagingState
 import com.solo.solodaily.BuildConfig
 import com.solo.solodaily.data.remote.dto.NewsApi
 import com.solo.solodaily.domain.model.Article
+import retrofit2.HttpException
+import java.io.IOException
 
 class NewsPagingSource(
     private val newsApi: NewsApi,
@@ -19,18 +21,17 @@ class NewsPagingSource(
         return try {
             val newsResponse = newsApi.getNews(sources = sources, page = page, apiKey = BuildConfig.API_KEY)
             totalNewsCount += newsResponse.articles.size
-            val articles = newsResponse.articles.distinctBy { it.title }
 
             LoadResult.Page(
-                data = articles,
+                data = newsResponse.articles.distinctBy { it.title },
                 nextKey = if (totalNewsCount == newsResponse.totalResults) null else page + 1,
                 prevKey = null,
             )
-        } catch (e: Exception) {
+        } catch (e: IOException) {
             e.printStackTrace()
-            LoadResult.Error(
-                throwable = e,
-            )
+            LoadResult.Error(throwable = e,)
+        } catch (httpException: HttpException) {
+            return LoadResult.Error(httpException)
         }
     }
 
