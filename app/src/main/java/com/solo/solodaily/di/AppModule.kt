@@ -58,15 +58,14 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsApi(@ApplicationContext context: Context): NewsApi {
-
         val token by context.sharedPreferences(name = "token")
 
         val clientBuilder = OkHttpClient.Builder()
 
         clientBuilder
-            .connectTimeout(30, TimeUnit.SECONDS)  // Maximum time to establish a connection
-            .readTimeout(30, TimeUnit.SECONDS)     // Maximum time to wait for a server response
-            .writeTimeout(30, TimeUnit.SECONDS)    // Maximum time to send data to the server
+            .connectTimeout(30, TimeUnit.SECONDS) // Maximum time to establish a connection
+            .readTimeout(30, TimeUnit.SECONDS) // Maximum time to wait for a server response
+            .writeTimeout(30, TimeUnit.SECONDS) // Maximum time to send data to the server
 
         if (BuildConfig.DEBUG) {
             val logging = HttpLoggingInterceptor().apply {

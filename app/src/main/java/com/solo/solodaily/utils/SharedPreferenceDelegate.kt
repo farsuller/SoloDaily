@@ -7,7 +7,7 @@ import kotlin.reflect.KProperty
 class SharedPreferenceDelegate(
     private val context: Context,
     private val name: String,
-    private val defaultValue: String = ""
+    private val defaultValue: String = "",
 ) : ReadWriteProperty<Any?, String> {
 
     private val sharedPreferences by lazy {

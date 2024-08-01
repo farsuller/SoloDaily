@@ -20,7 +20,7 @@ val solodailyProperties: Properties by lazy {
     if (keystorePropertiesFile.exists()) {
         properties.load(keystorePropertiesFile.inputStream())
     } else {
-        throw FileNotFoundException("Keystore properties file not found.")
+       // throw FileNotFoundException("Keystore properties file not found.")
     }
     if (localPropertiesFile.exists()) {
         properties.load(localPropertiesFile.inputStream())
@@ -32,18 +32,18 @@ val solodailyProperties: Properties by lazy {
 }
 
 android {
-    namespace = ProjectConfig.namespace
+    namespace = ProjectConfig.NAMESPACE
 
     defaultConfig {
-        applicationId = ProjectConfig.applicationId
-        versionCode = ProjectConfig.versionCode
-        versionName = "${ProjectConfig.majorVersion}.${ProjectConfig.minorVersion}.${ProjectConfig.patchVersion}"
+        applicationId = ProjectConfig.APPLICATION_ID
+        versionCode = ProjectConfig.VERSION_CODE
+        versionName = "${ProjectConfig.MAJOR_VERSION}.${ProjectConfig.MINOR_VERSION}.${ProjectConfig.PATCH_VERSION}"
 
         buildConfigField(type = "String",name = "API_KEY", "\"${solodailyProperties.getProperty("API_KEY")}\"")
         buildConfigField(type = "String",name = "BASE_URL", "\"${solodailyProperties.getProperty("BASE_URL")}\"")
     }
     applicationVariants.all {
-        base.archivesName.set("${ProjectConfig.appFileName}-${buildType.name}-$versionCode-$versionName")
+        base.archivesName.set("${ProjectConfig.APP_FILENAME}-${buildType.name}-$versionCode-$versionName")
     }
 
     signingConfigs {

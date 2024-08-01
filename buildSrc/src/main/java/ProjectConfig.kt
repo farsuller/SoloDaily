@@ -1,17 +1,17 @@
 object ProjectConfig {
-    const val appFileName = "solodaily"
-    const val applicationId = "com.solo.solodaily"
+    const val APP_FILENAME = "solodaily"
+    const val APPLICATION_ID = "com.solo.solodaily"
 
-    const val namespace = "com.solo.solodaily"
+    const val NAMESPACE = "com.solo.solodaily"
 
-    const val compileSdk = 34
-    const val minSdk = 24
-    const val targetSdk = 34
+    const val COMPILE_SDK = 34
+    const val MIN_SDK = 24
+    const val TARGET_SDK = 34
 
-    const val versionCode = 3
+    const val VERSION_CODE = 3
 
-    const val majorVersion = 1
-    const val minorVersion = 2
-    const val patchVersion = 0
+    const val MAJOR_VERSION = 1
+    const val MINOR_VERSION = 2
+    const val PATCH_VERSION = 1
 
 }

@@ -29,7 +29,7 @@ class NewsPagingSource(
             )
         } catch (e: IOException) {
             e.printStackTrace()
-            LoadResult.Error(throwable = e,)
+            LoadResult.Error(throwable = e)
         } catch (httpException: HttpException) {
             return LoadResult.Error(httpException)
         }
