@@ -5,6 +5,8 @@ Welcome to SoloDaily, your trusted source for breaking news and insightful artic
 we uphold a strict policy of no data collection. You can browse, search, and bookmark articles with confidence, knowing that your personal information remains secure. Enjoy a seamless news experience without sacrificing your privacy. 
 Stay informed with SoloDaily, where quality content meets privacy assurance.
 
+https://play.google.com/store/apps/details?id=com.solo.solodaily
+
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
     <img src="https://github.com/user-attachments/assets/740f5fdb-31f1-4481-a093-7fede743eaea" alt="Screenshot 1" width="200"/>
     <img src="https://github.com/user-attachments/assets/f8ddb130-6023-4181-b838-b4c36191b540" alt="Screenshot 2" width="200"/>
