@@ -107,9 +107,11 @@ fun NewsNavigator() {
             composable(route = Route.HomeScreen.route) {
                 val viewModel: HomeViewModel = hiltViewModel()
                 val articles = viewModel.news.collectAsLazyPagingItems()
+                val newsVergeCnn = viewModel.newsVergeCnn.collectAsLazyPagingItems()
 
                 HomeScreen(
                     articles = articles,
+                    newsVergeCnn = newsVergeCnn,
                     navigateToSearch = {
                         navigateToTap(navController = navController, Route.SearchScreen.route)
                     },

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -34,6 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import com.solo.solodaily.R
 import com.solo.solodaily.domain.model.Article
+import com.solo.solodaily.presentation.common.ArticleCard
+import com.solo.solodaily.presentation.common.ArticleTitleCard
 import com.solo.solodaily.presentation.common.ArticlesList
 import com.solo.solodaily.presentation.common.SearchBar
 import com.solo.solodaily.utils.TestTags.HEADER_SOLODAILY
@@ -44,6 +47,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
+    newsVergeCnn: LazyPagingItems<Article>,
     navigateToSearch: () -> Unit,
     navigateToDetails: (Article) -> Unit,
 ) {
@@ -68,6 +72,7 @@ fun HomeScreen(
                 isRefreshing = true
                 delay(500)
                 articles.refresh()
+                newsVergeCnn.refresh()
                 isRefreshing = false
             }
         },
@@ -94,6 +99,14 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         TitleMarquees(titles)
+
+        LazyRow {
+            items(count = newsVergeCnn.itemCount) { vergeCnn ->
+                newsVergeCnn[vergeCnn]?.let { a ->
+                    ArticleTitleCard(article = a, onClick = { navigateToDetails(a) })
+                }
+            }
+        }
 
         Box(modifier = Modifier.pullRefresh(pullRefreshState)) {
             ArticlesList(
