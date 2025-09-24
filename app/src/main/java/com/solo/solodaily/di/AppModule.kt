@@ -125,7 +125,7 @@ object AppModule {
             klass = NewsDatabase::class.java,
             name = NEWS_DB_NAME,
         ).addTypeConverter(NewsTypeConverter())
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(false)
             .build()
     }
 
